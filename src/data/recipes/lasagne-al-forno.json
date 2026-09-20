@@ -4,6 +4,7 @@
   "folderId": "mains-pasta",
   "servings": 6,
   "meals": ["lunch", "dinner"],
+  "taste": "salty",
   "groups": [
     {
       "title": "Ragu",

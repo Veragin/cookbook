@@ -4,7 +4,7 @@ import styled from 'styled-components'
 
 import { Chip } from '../../components'
 import { useRecipes } from './RecipesProvider'
-import type { Meal, Recipe } from '../../types'
+import type { Meal, Recipe, Taste } from '../../types'
 
 export type RecipeCardProps = {
   recipe: Recipe
@@ -18,6 +18,12 @@ export type RecipeCardProps = {
 const MEAL_LABELS: Record<Meal, string> = {
   lunch: 'Lunch',
   dinner: 'Dinner',
+  cake: 'Cake',
+}
+
+const TASTE_LABELS: Record<Taste, string> = {
+  sweet: 'Sweet',
+  salty: 'Salty',
 }
 
 const Root = styled.article`
@@ -148,13 +154,12 @@ export function RecipeCard({ recipe, subtitle, actions, className }: RecipeCardP
           <Name>{recipe.name}</Name>
           {subtitle && <Subtitle>{subtitle}</Subtitle>}
           <Meta>
-            {recipe.meals.length > 0 && (
-              <Badges>
-                {recipe.meals.map((meal) => (
-                  <Chip key={meal} label={MEAL_LABELS[meal]} />
-                ))}
-              </Badges>
-            )}
+            <Badges>
+              {recipe.meals.map((meal) => (
+                <Chip key={meal} label={MEAL_LABELS[meal]} />
+              ))}
+              <Chip label={TASTE_LABELS[recipe.taste]} />
+            </Badges>
             <span>{plural(recipe.servings, 'serving')}</span>
             <span aria-hidden="true">·</span>
             <span>{plural(ingredientCount, 'ingredient')}</span>

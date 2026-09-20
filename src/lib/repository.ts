@@ -9,7 +9,19 @@
 import { getDb } from './db'
 import type { StoredImage, Tombstone } from './db'
 import { newId } from './id'
-import type { Folder, Recipe } from '../types'
+import { TASTES } from '../types'
+import type { Folder, Recipe, Taste } from '../types'
+
+const DEFAULT_TASTE: Taste = 'salty'
+
+/**
+ * Fills in fields added after a row was written — rows stored before `taste` existed
+ * carry none, and the UI reads it unconditionally. Cheap enough to run on every load.
+ */
+function withDefaults(recipe: Recipe): Recipe {
+  if ((TASTES as readonly string[]).includes(recipe?.taste)) return recipe
+  return { ...recipe, taste: DEFAULT_TASTE }
+}
 
 export type LoadAllResult = {
   recipes: Recipe[]
@@ -40,7 +52,7 @@ export async function loadAll(): Promise<LoadAllResult> {
       db.getAll('tombstones'),
       db.getAll('images'),
     ])
-    return { recipes, folders, tombstones, images, available: true }
+    return { recipes: recipes.map(withDefaults), folders, tombstones, images, available: true }
   } catch (error) {
     console.warn('[repository] loadAll failed', error)
     return empty

@@ -11,7 +11,7 @@
 import { useCallback, useMemo, useState } from 'react'
 
 import { newId } from '../../lib/id'
-import type { Ingredient, IngredientGroup, Meal, Recipe, Unit } from '../../types'
+import type { Ingredient, IngredientGroup, Meal, Recipe, Taste, Unit } from '../../types'
 import type { RecipeDraft } from './RecipesProvider'
 
 export const MIN_SERVINGS = 1
@@ -21,7 +21,16 @@ export const DEFAULT_SERVINGS = 4
 export const MEAL_OPTIONS: ReadonlyArray<{ value: Meal; label: string }> = [
   { value: 'lunch', label: 'Lunch' },
   { value: 'dinner', label: 'Dinner' },
+  { value: 'cake', label: 'Cake' },
 ]
+
+export const TASTE_OPTIONS: ReadonlyArray<{ value: Taste; label: string }> = [
+  { value: 'salty', label: 'Salty' },
+  { value: 'sweet', label: 'Sweet' },
+]
+
+/** Most recipes are savoury, so an untouched form starts there. */
+export const DEFAULT_TASTE: Taste = 'salty'
 
 /* ------------------------------------------------------------------ */
 /* Form shape                                                          */
@@ -55,6 +64,7 @@ export type RecipeFormState = {
   name: string
   servings: number
   meals: Meal[]
+  taste: Taste
   folderId: string | null
   image: FormImage
   groups: FormGroup[]
@@ -92,6 +102,7 @@ export const formFieldIds = {
   /** The first meal toggle doubles as the focus target for the group's error. */
   meals: 'recipe-meal-lunch',
   meal: (meal: Meal) => `recipe-meal-${meal}`,
+  taste: 'recipe-taste',
   groupTitle: (groupId: string) => `group-title-${slugId(groupId)}`,
   quantity: (itemId: string) => `ing-qty-${slugId(itemId)}`,
   unit: (itemId: string) => `ing-unit-${slugId(itemId)}`,
@@ -185,6 +196,7 @@ function blankState(folderId: string | null): RecipeFormState {
     name: '',
     servings: DEFAULT_SERVINGS,
     meals: [],
+    taste: DEFAULT_TASTE,
     folderId,
     image: { kind: 'none' },
     groups: [emptyGroup()],
@@ -216,6 +228,9 @@ function stateFromRecipe(recipe: Recipe): RecipeFormState {
     meals: MEAL_OPTIONS.filter((option) => recipe.meals.includes(option.value)).map(
       (option) => option.value,
     ),
+    taste: TASTE_OPTIONS.some((option) => option.value === recipe.taste)
+      ? recipe.taste
+      : DEFAULT_TASTE,
     folderId: recipe.folderId,
     image: recipe.imageId ? { kind: 'stored', imageId: recipe.imageId } : { kind: 'none' },
     groups: groups.length > 0 ? groups : [emptyGroup()],
@@ -229,6 +244,7 @@ function signatureOf(state: RecipeFormState): string {
     name: state.name.trim(),
     servings: state.servings,
     meals: [...state.meals].sort(),
+    taste: state.taste,
     folderId: state.folderId,
     image:
       state.image.kind === 'stored'
@@ -281,6 +297,7 @@ export type RecipeFormApi = {
   setName(name: string): void
   setServings(servings: number): void
   toggleMeal(meal: Meal): void
+  setTaste(taste: Taste): void
   setFolderId(folderId: string | null): void
   setImage(blob: Blob): void
   clearImage(): void
@@ -336,10 +353,14 @@ export function useRecipeForm({
     setState((prev) => {
       const has = prev.meals.includes(meal)
       const next = has ? prev.meals.filter((entry) => entry !== meal) : [...prev.meals, meal]
-      // Keep the canonical lunch-before-dinner order regardless of click order.
+      // Keep the canonical lunch → dinner → cake order regardless of click order.
       return { ...prev, meals: MEAL_OPTIONS.filter((o) => next.includes(o.value)).map((o) => o.value) }
     })
     setErrors((prev) => ({ ...prev, meals: undefined }))
+  }, [])
+
+  const setTaste = useCallback((taste: Taste) => {
+    setState((prev) => ({ ...prev, taste }))
   }, [])
 
   const setFolderId = useCallback((folderId: string | null) => {
@@ -509,7 +530,7 @@ export function useRecipeForm({
     }
 
     if (state.meals.length === 0) {
-      nextErrors.meals = 'Pick at least one — lunch, dinner, or both.'
+      nextErrors.meals = 'Pick at least one — lunch, dinner or cake.'
       fail(formFieldIds.meals, nextErrors.meals)
     }
 
@@ -587,6 +608,7 @@ export function useRecipeForm({
         groups,
         instructions,
         meals: state.meals,
+        taste: state.taste,
       },
     }
   }, [state])
@@ -602,6 +624,7 @@ export function useRecipeForm({
     setName,
     setServings,
     toggleMeal,
+    setTaste,
     setFolderId,
     setImage,
     clearImage,

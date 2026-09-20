@@ -4,6 +4,7 @@
   "folderId": "quick",
   "servings": 2,
   "meals": ["lunch", "dinner"],
+  "taste": "salty",
   "groups": [
     {
       "items": [

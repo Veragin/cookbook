@@ -3,7 +3,8 @@
   "name": "Banana Bread",
   "folderId": null,
   "servings": 8,
-  "meals": ["lunch"],
+  "meals": ["lunch", "cake"],
+  "taste": "sweet",
   "groups": [
     {
       "items": [

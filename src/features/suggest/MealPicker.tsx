@@ -19,6 +19,7 @@ const OPTIONS: ReadonlyArray<SegmentedOption<MealOption>> = [
   { value: 'any', label: 'Any' },
   { value: 'lunch', label: 'Lunch' },
   { value: 'dinner', label: 'Dinner' },
+  { value: 'cake', label: 'Cake' },
 ]
 
 const Wrapper = styled.div<{ $disabled: boolean }>`
@@ -36,7 +37,7 @@ const Label = styled.span`
   color: ${({ theme }) => theme.color.text};
 `
 
-/** Lunch / Dinner / Any. Clearing back to "Any" is just picking the first segment. */
+/** Any / Lunch / Dinner / Cake. Clearing back to "Any" is just picking the first segment. */
 export function MealPicker({ value, onChange, disabled = false, className }: MealPickerProps) {
   return (
     <Wrapper className={className} $disabled={disabled}>

@@ -9,8 +9,8 @@
  * `src/types.ts`. Prints one `file: message` line per problem and exits 1 if any
  * were found; otherwise prints a short summary.
  *
- * The unit enum is parsed out of `src/types.ts` at runtime (see readUnits) so it
- * can never drift from the `UNITS` constant the app codes against.
+ * The unit / meal / taste enums are parsed out of `src/types.ts` at runtime (see
+ * readEnum) so they can never drift from the constants the app codes against.
  */
 
 import { readFileSync, readdirSync, existsSync } from 'node:fs'
@@ -22,9 +22,17 @@ const TYPES_FILE = join(ROOT, 'src', 'types.ts')
 const FOLDERS_FILE = join(ROOT, 'src', 'data', 'folders.json')
 const RECIPES_DIR = join(ROOT, 'src', 'data', 'recipes')
 
-const MEALS = ['lunch', 'dinner']
 const FORBIDDEN_RECIPE_FIELDS = ['id', 'origin', 'createdAt', 'updatedAt', 'imageId']
-const RECIPE_FIELDS = ['slug', 'name', 'folderId', 'servings', 'meals', 'groups', 'instructions']
+const RECIPE_FIELDS = [
+  'slug',
+  'name',
+  'folderId',
+  'servings',
+  'meals',
+  'taste',
+  'groups',
+  'instructions',
+]
 const FOLDER_FIELDS = ['id', 'name', 'parentId']
 const GROUP_FIELDS = ['id', 'title', 'items']
 const ITEM_FIELDS = ['id', 'name', 'quantity', 'unit', 'note']
@@ -41,12 +49,12 @@ const rel = (p) => relative(ROOT, p).split('\\').join('/')
 /* Helpers                                                             */
 /* ------------------------------------------------------------------ */
 
-/** Parse `export const UNITS = ['g', 'kg', ...] as const` out of src/types.ts. */
-function readUnits() {
+/** Parse `export const NAME = ['a', 'b', ...] as const` out of src/types.ts. */
+function readEnum(name) {
   const source = readFileSync(TYPES_FILE, 'utf8')
-  const match = source.match(/export const UNITS\s*=\s*\[([^\]]*)\]/)
+  const match = source.match(new RegExp(`export const ${name}\\s*=\\s*\\[([^\\]]*)\\]`))
   if (!match) {
-    fail(rel(TYPES_FILE), 'could not find `export const UNITS = [...]`')
+    fail(rel(TYPES_FILE), `could not find \`export const ${name} = [...]\``)
     return []
   }
   return match[1]
@@ -155,7 +163,8 @@ function validateFolders() {
 /* Recipes                                                             */
 /* ------------------------------------------------------------------ */
 
-function validateRecipe(path, folders, units, seenSlugs, ingredientNames) {
+function validateRecipe(path, folders, enums, seenSlugs, ingredientNames) {
+  const { units, meals: MEALS, tastes: TASTES } = enums
   const file = rel(path)
   const stem = basename(path, '.json')
   const recipe = readJson(path)
@@ -210,6 +219,13 @@ function validateRecipe(path, folders, units, seenSlugs, ingredientNames) {
       else if (seen.has(meal)) fail(file, `meal "${meal}" is listed twice`)
       seen.add(meal)
     }
+  }
+
+  // taste
+  if (!('taste' in recipe)) {
+    fail(file, `is missing "taste" (one of ${TASTES.join(', ')})`)
+  } else if (!TASTES.includes(recipe.taste)) {
+    fail(file, `taste ${JSON.stringify(recipe.taste)} is not one of ${TASTES.join(', ')}`)
   }
 
   // groups
@@ -292,7 +308,11 @@ function validateRecipe(path, folders, units, seenSlugs, ingredientNames) {
 /* Main                                                                */
 /* ------------------------------------------------------------------ */
 
-const units = readUnits()
+const enums = {
+  units: readEnum('UNITS'),
+  meals: readEnum('MEALS'),
+  tastes: readEnum('TASTES'),
+}
 const folders = validateFolders()
 
 let recipeFiles = []
@@ -309,7 +329,7 @@ if (!existsSync(RECIPES_DIR)) {
 const seenSlugs = new Map()
 const ingredientNames = new Set()
 for (const path of recipeFiles) {
-  validateRecipe(path, folders, units, seenSlugs, ingredientNames)
+  validateRecipe(path, folders, enums, seenSlugs, ingredientNames)
 }
 
 if (problems.length > 0) {

@@ -15,9 +15,10 @@ import { useRecipes } from './RecipesProvider'
 import { Button, Chip, ConfirmDialog, EmptyState, Spinner } from '../../components'
 import { blobToDataUrl, buildRecipeExport, downloadJson, toFilename } from '../../lib/export'
 import { scaleFactor } from '../../lib/quantity'
-import type { Meal } from '../../types'
+import type { Meal, Taste } from '../../types'
 
-const MEAL_LABEL: Record<Meal, string> = { lunch: 'Lunch', dinner: 'Dinner' }
+const MEAL_LABEL: Record<Meal, string> = { lunch: 'Lunch', dinner: 'Dinner', cake: 'Cake' }
+const TASTE_LABEL: Record<Taste, string> = { sweet: 'Sweet', salty: 'Salty' }
 
 const Page = styled.article`
   display: flex;
@@ -292,6 +293,7 @@ export function RecipeViewPage() {
           {recipe.meals.map((meal) => (
             <Chip key={meal} label={MEAL_LABEL[meal]} />
           ))}
+          <Chip label={TASTE_LABEL[recipe.taste]} />
           <Serves>
             Serves {recipe.servings} {recipe.servings === 1 ? 'portion' : 'portions'}
           </Serves>

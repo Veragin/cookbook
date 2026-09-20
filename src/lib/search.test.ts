@@ -23,6 +23,7 @@ function recipe(name: string, ingredients: string[][], id = name): Recipe {
     })),
     instructions: ['Cook it.'],
     meals: ['dinner'],
+    taste: 'salty',
     origin: 'seed',
     createdAt: '2024-01-01T00:00:00.000Z',
     updatedAt: '2024-01-01T00:00:00.000Z',

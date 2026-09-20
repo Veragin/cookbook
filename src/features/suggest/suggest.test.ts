@@ -27,6 +27,7 @@ function recipe(
     ],
     instructions: [],
     meals,
+    taste: 'salty',
     origin: 'seed',
     createdAt: '2024-01-01T00:00:00.000Z',
     updatedAt: '2024-01-01T00:00:00.000Z',
@@ -38,6 +39,7 @@ const pasta = recipe('r2', 'Garlic Pasta', ['lunch', 'dinner'], ['spaghetti', 'g
 const roast = recipe('r3', 'Sunday Roast', ['dinner'], ['beef', 'potato', 'carrot'])
 const svickova = recipe('r4', 'Svíčková', ['dinner'], ['svíčková beef', 'Smetana', 'celery root'])
 const snack = recipe('r5', 'Odd Snack', [], ['crackers', 'garlic'])
+const cake = recipe('r6', 'Walnut Cake', ['cake'], ['flour', 'sugar', 'walnut'])
 
 const all = [soup, pasta, roast, svickova, snack]
 
@@ -60,6 +62,14 @@ describe('findCandidates', () => {
   it('filters by the dinner flag', () => {
     const found = findCandidates(all, { meal: 'dinner', ingredients: [] })
     expect(found.map((item) => item.id)).toEqual(['r2', 'r3', 'r4'])
+  })
+
+  it('filters by the cake flag', () => {
+    const withCake = [...all, cake]
+    expect(findCandidates(withCake, { meal: 'cake', ingredients: [] })).toEqual([cake])
+    // …and a cake-only recipe never turns up under lunch or dinner.
+    expect(findCandidates(withCake, { meal: 'lunch', ingredients: [] })).not.toContain(cake)
+    expect(findCandidates(withCake, { meal: 'dinner', ingredients: [] })).not.toContain(cake)
   })
 
   it('excludes recipes with no meal flags once a meal is chosen', () => {

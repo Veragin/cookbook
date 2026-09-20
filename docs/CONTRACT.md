@@ -216,6 +216,7 @@ In tests, `renderWithTheme(ui, { mode: 'dark' })` renders the dark palette; defa
   "folderId": "mains",
   "servings": 4,
   "meals": ["lunch", "dinner"],
+  "taste": "salty",
   "groups": [
     {
       "title": "Stew",
@@ -231,6 +232,8 @@ In tests, `renderWithTheme(ui, { mode: 'dark' })` renders the dark palette; defa
 
 Rules: `slug` is the filename stem and must be unique; `folderId` is a folder id from
 `folders.json` or `null`; `unit` is one of `src/types.ts`'s `UNITS` or `null`; `quantity`
-is a number or `null` ("to taste"); a group `title` may be omitted for ungrouped items.
+is a number or `null` ("to taste"); `meals` is a non-empty subset of `MEALS`
+(`lunch`, `dinner`, `cake`) and `taste` is exactly one of `TASTES` (`sweet`, `salty`);
+a group `title` may be omitted for ungrouped items.
 The seed loader derives stable ids (`seed:<slug>`, `seed:<slug>:g0`, `seed:<slug>:g0:i1`)
 — seed JSON never contains `id`, `origin`, `createdAt`, `updatedAt`, or `imageId`.

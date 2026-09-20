@@ -4,6 +4,7 @@
   "folderId": "baking-bread",
   "servings": 8,
   "meals": ["lunch", "dinner"],
+  "taste": "salty",
   "groups": [
     {
       "title": "Dough",

@@ -28,6 +28,7 @@ function recipe(id: string, name: string, ingredients: string[] = []): Recipe {
     ],
     instructions: [],
     meals: [],
+    taste: 'salty',
     origin: id.startsWith('seed:') ? 'seed' : 'user',
     createdAt: '2024-01-01T00:00:00.000Z',
     updatedAt: '2024-01-01T00:00:00.000Z',

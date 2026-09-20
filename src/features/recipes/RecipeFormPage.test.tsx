@@ -88,6 +88,8 @@ describe('RecipeFormPage — create', () => {
     expect(recipe.name).toBe('Test Soup')
     expect(recipe.servings).toBe(6)
     expect(recipe.meals).toEqual(['lunch'])
+    // Taste was left untouched, so it saves as the default.
+    expect(recipe.taste).toBe('salty')
     expect(recipe.origin).toBe('user')
     expect(recipe.groups).toHaveLength(1)
     expect(recipe.groups[0].title).toBeUndefined()
@@ -95,6 +97,42 @@ describe('RecipeFormPage — create', () => {
       expect.objectContaining({ name: 'water', quantity: 1.5, unit: 'l', note: 'filtered' }),
     ])
     expect(recipe.instructions).toEqual(['Simmer gently.'])
+  })
+
+  it('saves the cake meal together with a sweet taste', async () => {
+    const user = userEvent.setup()
+    renderForm('/recipes/new')
+    await waitForForm()
+
+    await user.type(screen.getByRole('textbox', { name: 'Name' }), 'Carrot Cake')
+    await user.click(screen.getByRole('checkbox', { name: 'Cake' }))
+    await user.click(screen.getByRole('radio', { name: 'Sweet' }))
+    await user.type(screen.getByLabelText('Ingredient 1 name'), 'carrot')
+    await user.type(screen.getByLabelText('Step 1'), 'Bake for 40 minutes.')
+
+    await user.click(screen.getByRole('button', { name: 'Save recipe' }))
+
+    const recipe = await savedRecipe()
+    expect(recipe.meals).toEqual(['cake'])
+    expect(recipe.taste).toBe('sweet')
+  })
+
+  it('keeps meals in the canonical lunch → dinner → cake order', async () => {
+    const user = userEvent.setup()
+    renderForm('/recipes/new')
+    await waitForForm()
+
+    await user.type(screen.getByRole('textbox', { name: 'Name' }), 'Anytime Bake')
+    await user.click(screen.getByRole('checkbox', { name: 'Cake' }))
+    await user.click(screen.getByRole('checkbox', { name: 'Dinner' }))
+    await user.click(screen.getByRole('checkbox', { name: 'Lunch' }))
+    await user.type(screen.getByLabelText('Ingredient 1 name'), 'flour')
+    await user.type(screen.getByLabelText('Step 1'), 'Bake it.')
+
+    await user.click(screen.getByRole('button', { name: 'Save recipe' }))
+
+    const recipe = await savedRecipe()
+    expect(recipe.meals).toEqual(['lunch', 'dinner', 'cake'])
   })
 
   it('honours the ?folderId= query param as the initial folder', async () => {
@@ -232,7 +270,7 @@ describe('RecipeFormPage — validation', () => {
     await user.click(screen.getByRole('button', { name: 'Save recipe' }))
 
     expect(await screen.findByText('Give the recipe a name.')).toBeInTheDocument()
-    expect(screen.getByText('Pick at least one — lunch, dinner, or both.')).toBeInTheDocument()
+    expect(screen.getByText('Pick at least one — lunch, dinner or cake.')).toBeInTheDocument()
     expect(screen.getByRole('textbox', { name: 'Name' })).toHaveFocus()
     expect(screen.getByRole('textbox', { name: 'Name' })).toHaveAttribute('aria-invalid', 'true')
 
@@ -322,6 +360,8 @@ describe('RecipeFormPage — edit', () => {
     await waitFor(() => expect(nameInput).toHaveValue('Shakshuka'))
     expect(screen.getByRole('checkbox', { name: 'Lunch' })).toBeChecked()
     expect(screen.getByRole('checkbox', { name: 'Dinner' })).toBeChecked()
+    expect(screen.getByRole('checkbox', { name: 'Cake' })).not.toBeChecked()
+    expect(screen.getByRole('radio', { name: 'Salty' })).toHaveAttribute('aria-checked', 'true')
     expect(screen.getByLabelText('Ingredient 1 amount')).toHaveValue('2')
     expect(screen.getByLabelText('Ingredient 1 name')).toHaveValue('olive oil')
 

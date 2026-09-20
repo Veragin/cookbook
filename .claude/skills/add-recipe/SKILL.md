@@ -52,7 +52,8 @@ Exact shape — copy this and replace the values:
   "name": "Beef Goulash",            // human title, any capitalisation
   "folderId": "mains-soups",         // folder id from folders.json, or null
   "servings": 6,                     // integer >= 1; the BASE all quantities refer to
-  "meals": ["lunch", "dinner"],      // non-empty subset of lunch | dinner
+  "meals": ["lunch", "dinner"],      // non-empty subset of lunch | dinner | cake
+  "taste": "salty",                  // exactly one of sweet | salty
   "groups": [
     {
       "title": "Stew",               // OMIT the key entirely for ungrouped items
@@ -85,6 +86,11 @@ Field rules:
 - **`quantity`** — a positive number, or `null` for "to taste" (salt, pepper).
   `null` never scales and must be paired with `"unit": null`. Fractions are
   written as decimals (`0.5 tsp`, `1.5 tsp`).
+- **`meals`** — which slots the recipe is offered for in "Suggest meal". `cake` is
+  for bakes and desserts; a cake-only recipe never shows up under lunch or dinner,
+  so list `["lunch", "cake"]` when it works as both.
+- **`taste`** — `"sweet"` or `"salty"`, required, exactly one. This is `TASTES` in
+  `src/types.ts` (`MEALS` lives right above it).
 - **`servings`** — the base the quantities are written for. The UI scales every
   non-null quantity by `target / servings`, so write honest base amounts and
   prefer the smaller unit (`800 g`, not `0.8 kg`) — the formatter promotes

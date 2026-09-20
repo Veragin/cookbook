@@ -19,6 +19,7 @@ import {
   Field,
   IconButton,
   Input,
+  SegmentedControl,
   Select,
   Spinner,
   Stepper,
@@ -33,6 +34,7 @@ import {
   MAX_SERVINGS,
   MEAL_OPTIONS,
   MIN_SERVINGS,
+  TASTE_OPTIONS,
   formFieldIds,
   useRecipeForm,
 } from './useRecipeForm'
@@ -366,6 +368,7 @@ function RecipeForm({ mode, recipe, initialFolderId }: RecipeFormProps) {
 
   const mealsErrorId = 'recipe-meals-error'
   const mealsHintId = 'recipe-meals-hint'
+  const tasteHintId = 'recipe-taste-hint'
 
   return (
     <>
@@ -441,9 +444,22 @@ function RecipeForm({ mode, recipe, initialFolderId }: RecipeFormProps) {
               </ErrorText>
             ) : (
               <Hint id={mealsHintId}>
-                Drives the lunch/dinner suggestions. Pick either, or both.
+                Drives the meal suggestions. Pick any combination.
               </Hint>
             )}
+          </Fieldset>
+
+          <Fieldset disabled={submitting} aria-describedby={tasteHintId}>
+            <Legend>Taste</Legend>
+            <SegmentedControl
+              id={formFieldIds.taste}
+              label="Taste"
+              aria-describedby={tasteHintId}
+              options={TASTE_OPTIONS}
+              value={state.taste}
+              onChange={form.setTaste}
+            />
+            <Hint id={tasteHintId}>Is this a sweet or a salty recipe?</Hint>
           </Fieldset>
 
           <Field label="Folder" hint="Where this recipe is filed in your cookbook.">

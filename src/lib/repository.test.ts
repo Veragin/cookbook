@@ -35,6 +35,7 @@ function makeRecipe(overrides: Partial<Recipe> = {}): Recipe {
     ],
     instructions: ['Brown the beef.', 'Simmer for 2 hours.'],
     meals: ['dinner'],
+    taste: 'salty',
     origin: 'user',
     createdAt: '2024-05-01T10:00:00.000Z',
     updatedAt: '2024-05-01T10:00:00.000Z',

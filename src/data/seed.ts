@@ -9,8 +9,8 @@
  * rather than taking the whole app down. Zero seed files is a valid state.
  */
 
-import { UNITS } from '../types'
-import type { Folder, Ingredient, IngredientGroup, Meal, Recipe, Unit } from '../types'
+import { MEALS, TASTES, UNITS } from '../types'
+import type { Folder, Ingredient, IngredientGroup, Meal, Recipe, Taste, Unit } from '../types'
 
 /**
  * Fixed timestamps for bundled content. Deliberately a constant — seed recipes must
@@ -18,8 +18,10 @@ import type { Folder, Ingredient, IngredientGroup, Meal, Recipe, Unit } from '..
  */
 export const SEED_TIMESTAMP = '2024-01-01T00:00:00.000Z'
 
-const MEALS: readonly Meal[] = ['lunch', 'dinner']
 const UNIT_SET: ReadonlySet<string> = new Set(UNITS)
+
+/** What a file without a usable `taste` falls back to. */
+const DEFAULT_TASTE: Taste = 'salty'
 
 type Json = Record<string, unknown>
 
@@ -58,6 +60,14 @@ function parseMeals(value: unknown): Meal[] {
     }
   }
   return out
+}
+
+/** Unknown or missing values fall back to `salty` rather than dropping the recipe. */
+function parseTaste(value: unknown): Taste {
+  if (typeof value === 'string' && (TASTES as readonly string[]).includes(value)) {
+    return value as Taste
+  }
+  return DEFAULT_TASTE
 }
 
 function parseInstructions(value: unknown): string[] {
@@ -131,6 +141,7 @@ function normaliseRecipe(raw: unknown, path: string): Recipe | null {
     groups: parseGroups(raw.groups, id),
     instructions: parseInstructions(raw.instructions),
     meals: parseMeals(raw.meals),
+    taste: parseTaste(raw.taste),
     origin: 'seed',
     createdAt: SEED_TIMESTAMP,
     updatedAt: SEED_TIMESTAMP,

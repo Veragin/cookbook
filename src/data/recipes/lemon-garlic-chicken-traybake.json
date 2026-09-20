@@ -4,6 +4,7 @@
   "folderId": null,
   "servings": 4,
   "meals": ["dinner"],
+  "taste": "salty",
   "groups": [
     {
       "items": [

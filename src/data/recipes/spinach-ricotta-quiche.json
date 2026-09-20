@@ -4,6 +4,7 @@
   "folderId": "baking",
   "servings": 6,
   "meals": ["lunch", "dinner"],
+  "taste": "salty",
   "groups": [
     {
       "title": "Pastry",

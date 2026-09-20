@@ -10,7 +10,15 @@ export const UNITS = ['g', 'kg', 'ml', 'l', 'tsp', 'tbsp', 'cup', 'pcs', 'pinch'
 
 export type Unit = (typeof UNITS)[number] | null
 
-export type Meal = 'lunch' | 'dinner'
+/** Fixed meal list; a recipe carries one or more of these flags. */
+export const MEALS = ['lunch', 'dinner', 'cake'] as const
+
+export type Meal = (typeof MEALS)[number]
+
+/** Fixed taste list; every recipe is exactly one of these. */
+export const TASTES = ['sweet', 'salty'] as const
+
+export type Taste = (typeof TASTES)[number]
 
 export type Ingredient = {
   id: string
@@ -40,6 +48,8 @@ export type Recipe = {
   groups: IngredientGroup[]
   instructions: string[]
   meals: Meal[]
+  /** Sweet or salty — a single flag, always set. */
+  taste: Taste
   origin: 'seed' | 'user'
   createdAt: string
   updatedAt: string

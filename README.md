@@ -35,11 +35,12 @@
     - make the name as autocomplete filter generated from other recept ingrediencies
 - Can have an image
 - instructions as bullet point text
-- Lunch/DInner flag
+- Lunch/Dinner/Cake flag
+- Taste flag: sweet/salty
 
 ## Suggest meal
 
-- User can pick Lunch/Dinner
+- User can pick Lunch/Dinner/Cake
 - User can pick multiple ingrediencis as autocomplete multiple input
 - Suggest buttons that will give the user random meal from recepies that has required ingrediencies
 

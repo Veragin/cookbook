@@ -273,6 +273,7 @@ describe('realistic scaling scenario: 4 servings → 6', () => {
     ],
     instructions: ['Mix.', 'Fry.'],
     meals: ['lunch'],
+    taste: 'salty',
     origin: 'seed',
     createdAt: '2024-01-01T00:00:00.000Z',
     updatedAt: '2024-01-01T00:00:00.000Z',

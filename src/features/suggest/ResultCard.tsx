@@ -2,7 +2,7 @@ import { Link } from 'react-router-dom'
 import styled, { keyframes } from 'styled-components'
 
 import { Chip } from '../../components'
-import type { Meal, Recipe } from '../../types'
+import type { Meal, Recipe, Taste } from '../../types'
 
 export type ResultCardProps = {
   recipe: Recipe
@@ -13,7 +13,8 @@ export type ResultCardProps = {
   className?: string
 }
 
-const MEAL_LABELS: Record<Meal, string> = { lunch: 'Lunch', dinner: 'Dinner' }
+const MEAL_LABELS: Record<Meal, string> = { lunch: 'Lunch', dinner: 'Dinner', cake: 'Cake' }
+const TASTE_LABELS: Record<Taste, string> = { sweet: 'Sweet', salty: 'Salty' }
 
 const appear = keyframes`
   from {
@@ -170,6 +171,7 @@ export function ResultCard({ recipe, imageUrl, matched = [], className }: Result
           {meals.map((meal) => (
             <Badge key={meal}>{MEAL_LABELS[meal]}</Badge>
           ))}
+          <Badge>{TASTE_LABELS[recipe.taste]}</Badge>
           <Servings>
             Serves {recipe.servings}
           </Servings>

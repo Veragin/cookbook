@@ -65,10 +65,12 @@ const Loading = styled.div`
   font-size: ${({ theme }) => theme.font.size.sm};
 `
 
+const MEAL_NAMES: Record<Meal, string> = { lunch: 'lunch', dinner: 'dinner', cake: 'cake' }
+
 /** Human summary of the active filters, used in the no-match copy. */
 function describeCriteria(meal: Meal | null, ingredients: string[]): string {
   const parts: string[] = []
-  if (meal) parts.push(meal === 'lunch' ? 'lunch' : 'dinner')
+  if (meal) parts.push(MEAL_NAMES[meal])
   if (ingredients.length > 0) parts.push(ingredients.join(', '))
   return parts.join(' with ')
 }
