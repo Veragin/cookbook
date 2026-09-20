@@ -1,0 +1,38 @@
+{
+  "slug": "rosemary-focaccia",
+  "name": "Rosemary Focaccia",
+  "folderId": "baking-bread",
+  "servings": 8,
+  "meals": ["lunch", "dinner"],
+  "groups": [
+    {
+      "title": "Dough",
+      "items": [
+        { "name": "flour", "quantity": 500, "unit": "g", "note": "strong white" },
+        { "name": "water", "quantity": 400, "unit": "ml", "note": "lukewarm" },
+        { "name": "dried yeast", "quantity": 7, "unit": "g" },
+        { "name": "sugar", "quantity": 1, "unit": "tsp" },
+        { "name": "salt", "quantity": 10, "unit": "g" },
+        { "name": "olive oil", "quantity": 3, "unit": "tbsp" }
+      ]
+    },
+    {
+      "title": "Topping",
+      "items": [
+        { "name": "olive oil", "quantity": 3, "unit": "tbsp" },
+        { "name": "rosemary", "quantity": 2, "unit": "tbsp", "note": "leaves picked" },
+        { "name": "garlic", "quantity": 2, "unit": "pcs", "note": "cloves, thinly sliced" },
+        { "name": "sea salt", "quantity": null, "unit": null, "note": "flaky, for the top" }
+      ]
+    }
+  ],
+  "instructions": [
+    "Whisk the yeast and sugar into the warm water and leave until frothy.",
+    "Mix into the flour and salt with the oil to a very wet, shaggy dough.",
+    "Fold the dough in the bowl four times at 30 minute intervals, then chill overnight.",
+    "Oil a deep tray, tip in the dough and let it come to room temperature for 2 hours.",
+    "Dimple all over with oiled fingertips and scatter with rosemary, garlic and sea salt.",
+    "Drizzle with the remaining oil and bake at 220C for 20 to 25 minutes until golden.",
+    "Slide onto a rack so the base stays crisp and eat warm."
+  ]
+}

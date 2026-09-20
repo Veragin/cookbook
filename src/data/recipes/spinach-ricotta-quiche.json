@@ -1,0 +1,45 @@
+{
+  "slug": "spinach-ricotta-quiche",
+  "name": "Spinach and Ricotta Quiche",
+  "folderId": "baking",
+  "servings": 6,
+  "meals": ["lunch", "dinner"],
+  "groups": [
+    {
+      "title": "Pastry",
+      "items": [
+        { "name": "flour", "quantity": 200, "unit": "g", "note": "plain" },
+        { "name": "butter", "quantity": 100, "unit": "g", "note": "cold, cubed" },
+        { "name": "egg", "quantity": 1, "unit": "pcs", "note": "yolk only" },
+        { "name": "water", "quantity": 2, "unit": "tbsp", "note": "ice cold" },
+        { "name": "salt", "quantity": 1, "unit": "pinch" }
+      ]
+    },
+    {
+      "title": "Filling",
+      "items": [
+        { "name": "olive oil", "quantity": 1, "unit": "tbsp" },
+        { "name": "onion", "quantity": 1, "unit": "pcs", "note": "finely sliced" },
+        { "name": "garlic", "quantity": 2, "unit": "pcs", "note": "cloves, minced" },
+        { "name": "spinach", "quantity": 300, "unit": "g", "note": "wilted and squeezed dry" },
+        { "name": "ricotta", "quantity": 250, "unit": "g" },
+        { "name": "egg", "quantity": 3, "unit": "pcs" },
+        { "name": "milk", "quantity": 200, "unit": "ml" },
+        { "name": "parmesan", "quantity": 40, "unit": "g", "note": "grated" },
+        { "name": "lemon", "quantity": 1, "unit": "pcs", "note": "zest only" },
+        { "name": "nutmeg", "quantity": 1, "unit": "pinch" },
+        { "name": "salt", "quantity": null, "unit": null },
+        { "name": "black pepper", "quantity": null, "unit": null }
+      ]
+    }
+  ],
+  "instructions": [
+    "Rub the butter into the flour and salt, bind with the yolk and water, then chill for 30 minutes.",
+    "Roll out and line a 23cm tin, prick the base and chill again while the oven heats to 190C.",
+    "Blind bake for 15 minutes, lift out the beans and bake 8 minutes more until sandy.",
+    "Soften the onion and garlic in the oil, then stir through the drained spinach.",
+    "Beat the ricotta, eggs, milk, parmesan, lemon zest and nutmeg and season well.",
+    "Spread the spinach over the case, pour in the custard and bake for 30 to 35 minutes.",
+    "Let it settle for 20 minutes before slicing so the filling sets."
+  ]
+}

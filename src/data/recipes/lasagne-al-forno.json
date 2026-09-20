@@ -1,0 +1,50 @@
+{
+  "slug": "lasagne-al-forno",
+  "name": "Lasagne al Forno",
+  "folderId": "mains-pasta",
+  "servings": 6,
+  "meals": ["lunch", "dinner"],
+  "groups": [
+    {
+      "title": "Ragu",
+      "items": [
+        { "name": "olive oil", "quantity": 2, "unit": "tbsp" },
+        { "name": "onion", "quantity": 1, "unit": "pcs", "note": "finely diced" },
+        { "name": "carrot", "quantity": 1, "unit": "pcs", "note": "finely diced" },
+        { "name": "garlic", "quantity": 3, "unit": "pcs", "note": "cloves, minced" },
+        { "name": "beef mince", "quantity": 500, "unit": "g" },
+        { "name": "chopped tomato", "quantity": 800, "unit": "g", "note": "tinned" },
+        { "name": "milk", "quantity": 100, "unit": "ml" },
+        { "name": "basil", "quantity": 2, "unit": "tbsp", "note": "torn" },
+        { "name": "salt", "quantity": null, "unit": null },
+        { "name": "black pepper", "quantity": null, "unit": null }
+      ]
+    },
+    {
+      "title": "Bechamel",
+      "items": [
+        { "name": "butter", "quantity": 50, "unit": "g" },
+        { "name": "flour", "quantity": 50, "unit": "g" },
+        { "name": "milk", "quantity": 600, "unit": "ml" },
+        { "name": "nutmeg", "quantity": 1, "unit": "pinch", "note": "freshly grated" },
+        { "name": "salt", "quantity": null, "unit": null }
+      ]
+    },
+    {
+      "title": "Assembly",
+      "items": [
+        { "name": "lasagne sheet", "quantity": 250, "unit": "g" },
+        { "name": "parmesan", "quantity": 80, "unit": "g", "note": "grated" }
+      ]
+    }
+  ],
+  "instructions": [
+    "Sweat the onion, carrot and garlic in the oil until soft and sweet, about 12 minutes.",
+    "Turn up the heat, brown the mince well, then pour in the milk and let it cook away.",
+    "Add the tomatoes and basil and simmer gently for at least an hour until thick.",
+    "For the bechamel, melt the butter, whisk in the flour, then add the milk a little at a time.",
+    "Cook the sauce until it coats a spoon and season with nutmeg and salt.",
+    "Layer ragu, pasta sheets and bechamel three times, finishing with bechamel and parmesan.",
+    "Bake at 180C for 40 minutes until bubbling and browned, then rest 15 minutes before cutting."
+  ]
+}

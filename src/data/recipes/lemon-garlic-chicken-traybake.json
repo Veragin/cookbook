@@ -1,0 +1,34 @@
+{
+  "slug": "lemon-garlic-chicken-traybake",
+  "name": "Lemon and Garlic Chicken Traybake",
+  "folderId": null,
+  "servings": 4,
+  "meals": ["dinner"],
+  "groups": [
+    {
+      "items": [
+        { "name": "chicken thigh", "quantity": 1.2, "unit": "kg", "note": "bone in, skin on" },
+        { "name": "potato", "quantity": 800, "unit": "g", "note": "halved" },
+        { "name": "red onion", "quantity": 2, "unit": "pcs", "note": "cut into wedges" },
+        { "name": "garlic", "quantity": 6, "unit": "pcs", "note": "cloves, unpeeled" },
+        { "name": "lemon", "quantity": 1, "unit": "pcs", "note": "cut into wedges" },
+        { "name": "olive oil", "quantity": 3, "unit": "tbsp" },
+        { "name": "smoked paprika", "quantity": 1.5, "unit": "tsp" },
+        { "name": "rosemary", "quantity": 1, "unit": "tbsp", "note": "chopped" },
+        { "name": "thyme", "quantity": 1, "unit": "tsp", "note": "leaves only" },
+        { "name": "cherry tomato", "quantity": 250, "unit": "g" },
+        { "name": "parsley", "quantity": 2, "unit": "tbsp", "note": "chopped, to finish" },
+        { "name": "salt", "quantity": null, "unit": null },
+        { "name": "black pepper", "quantity": null, "unit": null }
+      ]
+    }
+  ],
+  "instructions": [
+    "Heat the oven to 200C and choose a tray large enough to hold everything in one layer.",
+    "Toss the potato, onion, garlic and lemon with the oil, paprika, rosemary and thyme.",
+    "Season the chicken generously and nestle it skin side up among the vegetables.",
+    "Roast for 30 minutes, then baste with the pan juices and add the cherry tomatoes.",
+    "Roast for another 20 to 25 minutes until the skin is crisp and the juices run clear.",
+    "Squeeze the softened garlic and roast lemon over the tray and scatter with parsley."
+  ]
+}

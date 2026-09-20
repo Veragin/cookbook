@@ -1,0 +1,33 @@
+{
+  "slug": "banana-bread",
+  "name": "Banana Bread",
+  "folderId": null,
+  "servings": 8,
+  "meals": ["lunch"],
+  "groups": [
+    {
+      "items": [
+        { "name": "banana", "quantity": 3, "unit": "pcs", "note": "very ripe, mashed" },
+        { "name": "butter", "quantity": 115, "unit": "g", "note": "melted and cooled" },
+        { "name": "sugar", "quantity": 150, "unit": "g", "note": "light brown" },
+        { "name": "egg", "quantity": 2, "unit": "pcs" },
+        { "name": "milk", "quantity": 60, "unit": "ml" },
+        { "name": "honey", "quantity": 1, "unit": "tbsp" },
+        { "name": "flour", "quantity": 250, "unit": "g", "note": "plain" },
+        { "name": "baking powder", "quantity": 1.5, "unit": "tsp" },
+        { "name": "cinnamon", "quantity": 0.5, "unit": "tsp" },
+        { "name": "walnut", "quantity": 1, "unit": "cup", "note": "roughly chopped" },
+        { "name": "salt", "quantity": 1, "unit": "pinch" }
+      ]
+    }
+  ],
+  "instructions": [
+    "Heat the oven to 170C and line a 900g loaf tin with baking paper.",
+    "Whisk the melted butter, sugar, eggs, milk and honey until smooth.",
+    "Stir the mashed banana through the wet mixture.",
+    "Fold in the flour, baking powder, cinnamon and salt until only just combined.",
+    "Fold in most of the walnuts, scrape into the tin and scatter the rest on top.",
+    "Bake for 55 to 65 minutes until a skewer comes out with only moist crumbs.",
+    "Cool in the tin for 15 minutes, then turn out onto a rack."
+  ]
+}

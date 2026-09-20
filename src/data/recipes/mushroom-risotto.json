@@ -1,0 +1,35 @@
+{
+  "slug": "mushroom-risotto",
+  "name": "Mushroom Risotto",
+  "folderId": "mains",
+  "servings": 4,
+  "meals": ["dinner"],
+  "groups": [
+    {
+      "items": [
+        { "name": "vegetable stock", "quantity": 1.2, "unit": "l", "note": "kept at a bare simmer" },
+        { "name": "butter", "quantity": 60, "unit": "g" },
+        { "name": "olive oil", "quantity": 1, "unit": "tbsp" },
+        { "name": "onion", "quantity": 1, "unit": "pcs", "note": "very finely diced" },
+        { "name": "garlic", "quantity": 2, "unit": "pcs", "note": "cloves, minced" },
+        { "name": "chestnut mushroom", "quantity": 400, "unit": "g", "note": "sliced" },
+        { "name": "arborio rice", "quantity": 320, "unit": "g" },
+        { "name": "white wine", "quantity": 125, "unit": "ml" },
+        { "name": "thyme", "quantity": 1, "unit": "tsp", "note": "leaves only" },
+        { "name": "parmesan", "quantity": 60, "unit": "g", "note": "finely grated" },
+        { "name": "parsley", "quantity": 2, "unit": "tbsp", "note": "chopped" },
+        { "name": "salt", "quantity": null, "unit": null },
+        { "name": "black pepper", "quantity": null, "unit": null }
+      ]
+    }
+  ],
+  "instructions": [
+    "Fry the mushrooms in half the butter and the oil over high heat until deeply browned, then set aside.",
+    "Lower the heat, soften the onion and garlic in the pan for 8 minutes.",
+    "Stir in the rice and toast for 2 minutes until the grains look translucent at the edges.",
+    "Pour in the wine and let it evaporate, then add the hot stock a ladle at a time, stirring.",
+    "After about 18 minutes the rice should be creamy but still firm in the centre.",
+    "Beat in the remaining butter, the parmesan, thyme and mushrooms off the heat.",
+    "Season, cover for 2 minutes to rest, then scatter with parsley and serve."
+  ]
+}

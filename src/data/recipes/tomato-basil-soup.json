@@ -1,0 +1,32 @@
+{
+  "slug": "tomato-basil-soup",
+  "name": "Tomato and Basil Soup",
+  "folderId": "mains-soups",
+  "servings": 4,
+  "meals": ["lunch", "dinner"],
+  "groups": [
+    {
+      "items": [
+        { "name": "olive oil", "quantity": 2, "unit": "tbsp" },
+        { "name": "onion", "quantity": 1, "unit": "pcs", "note": "chopped" },
+        { "name": "carrot", "quantity": 1, "unit": "pcs", "note": "chopped" },
+        { "name": "garlic", "quantity": 2, "unit": "pcs", "note": "cloves, sliced" },
+        { "name": "chopped tomato", "quantity": 800, "unit": "g", "note": "tinned" },
+        { "name": "vegetable stock", "quantity": 600, "unit": "ml" },
+        { "name": "sugar", "quantity": 1, "unit": "tsp" },
+        { "name": "basil", "quantity": 20, "unit": "g", "note": "leaves and stalks separated" },
+        { "name": "double cream", "quantity": 100, "unit": "ml" },
+        { "name": "salt", "quantity": null, "unit": null },
+        { "name": "black pepper", "quantity": null, "unit": null }
+      ]
+    }
+  ],
+  "instructions": [
+    "Cook the onion and carrot in the oil over medium heat until soft but not coloured.",
+    "Add the garlic and the basil stalks and cook for one more minute.",
+    "Tip in the tomatoes, stock and sugar and simmer for 25 minutes.",
+    "Blend until completely smooth, adding a little hot water if it is too thick.",
+    "Stir in the cream and the basil leaves and warm through without boiling.",
+    "Season with salt and black pepper and serve with buttered toast."
+  ]
+}

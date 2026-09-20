@@ -1,0 +1,30 @@
+{
+  "slug": "spaghetti-aglio-e-olio",
+  "name": "Spaghetti Aglio e Olio",
+  "folderId": "mains-pasta",
+  "servings": 2,
+  "meals": ["dinner"],
+  "groups": [
+    {
+      "items": [
+        { "name": "spaghetti", "quantity": 200, "unit": "g" },
+        { "name": "olive oil", "quantity": 4, "unit": "tbsp" },
+        { "name": "garlic", "quantity": 4, "unit": "pcs", "note": "cloves, thinly sliced" },
+        { "name": "chilli flake", "quantity": 0.5, "unit": "tsp" },
+        { "name": "parsley", "quantity": 2, "unit": "tbsp", "note": "finely chopped" },
+        { "name": "parmesan", "quantity": 30, "unit": "g", "note": "finely grated" },
+        { "name": "lemon", "quantity": 0.5, "unit": "pcs", "note": "zest only" },
+        { "name": "salt", "quantity": null, "unit": null },
+        { "name": "black pepper", "quantity": null, "unit": null }
+      ]
+    }
+  ],
+  "instructions": [
+    "Boil the spaghetti in heavily salted water until just short of al dente.",
+    "Meanwhile warm the oil, garlic and chilli in a wide pan over low heat until the garlic is pale gold.",
+    "Lift the pasta straight into the pan with a splash of its cooking water.",
+    "Toss hard for a minute so the oil and water emulsify into a glossy sauce.",
+    "Take off the heat, stir through the parsley, parmesan and lemon zest.",
+    "Season with salt and plenty of black pepper and serve at once."
+  ]
+}

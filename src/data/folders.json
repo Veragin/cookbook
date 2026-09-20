@@ -1,0 +1,8 @@
+[
+  { "id": "mains", "name": "Main dishes", "parentId": null },
+  { "id": "mains-pasta", "name": "Pasta", "parentId": "mains" },
+  { "id": "mains-soups", "name": "Soups & stews", "parentId": "mains" },
+  { "id": "baking", "name": "Baking", "parentId": null },
+  { "id": "baking-bread", "name": "Bread", "parentId": "baking" },
+  { "id": "quick", "name": "Quick & easy", "parentId": null }
+]

@@ -1,0 +1,30 @@
+{
+  "slug": "garlic-butter-noodles",
+  "name": "Garlic Butter Noodles",
+  "folderId": "quick",
+  "servings": 3,
+  "meals": ["lunch"],
+  "groups": [
+    {
+      "items": [
+        { "name": "egg noodle", "quantity": 250, "unit": "g" },
+        { "name": "butter", "quantity": 50, "unit": "g" },
+        { "name": "olive oil", "quantity": 1, "unit": "tbsp" },
+        { "name": "garlic", "quantity": 4, "unit": "pcs", "note": "cloves, minced" },
+        { "name": "soy sauce", "quantity": 2, "unit": "tbsp" },
+        { "name": "honey", "quantity": 1, "unit": "tsp" },
+        { "name": "chilli flake", "quantity": 0.25, "unit": "tsp" },
+        { "name": "spring onion", "quantity": 3, "unit": "pcs", "note": "finely sliced" },
+        { "name": "parmesan", "quantity": 30, "unit": "g", "note": "grated" },
+        { "name": "black pepper", "quantity": null, "unit": null }
+      ]
+    }
+  ],
+  "instructions": [
+    "Cook the noodles in boiling water until just tender, then drain and keep a mugful of the water.",
+    "Melt the butter with the oil and cook the garlic and chilli gently for 2 minutes.",
+    "Stir in the soy sauce and honey and let it bubble for 30 seconds.",
+    "Add the noodles with a splash of the cooking water and toss until glossy.",
+    "Finish off the heat with the spring onion, parmesan and a good grind of black pepper."
+  ]
+}

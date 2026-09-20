@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, viewport-fit=cover, maximum-scale=5"
+    />
+    <meta name="theme-color" content="#b4451f" />
+    <meta name="description" content="Manage your recipes and get meal suggestions — offline ready." />
+
+    <!-- iOS standalone support -->
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="default" />
+    <meta name="apple-mobile-web-app-title" content="Cookbook" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+
+    <title>Cookbook</title>
+
+    <!--
+      Paints the right background before React mounts, so a dark-mode launch does
+      not flash white. The colours mirror `color.bg` / `color.browserChrome` in
+      src/theme/theme.ts; the storage key mirrors THEME_STORAGE_KEY in src/theme/mode.ts.
+    -->
+    <style>
+      html {
+        background: #fffaf4;
+        color-scheme: light;
+      }
+      html[data-theme='dark'] {
+        background: #17120f;
+        color-scheme: dark;
+      }
+    </style>
+    <script>
+      try {
+        var pref = localStorage.getItem('cookbook:theme')
+        var dark =
+          pref === 'dark' ||
+          (pref !== 'light' && window.matchMedia('(prefers-color-scheme: dark)').matches)
+        if (dark) {
+          document.documentElement.dataset.theme = 'dark'
+          var meta = document.querySelector('meta[name="theme-color"]')
+          if (meta) meta.content = '#221b16'
+        }
+      } catch (e) {
+        /* no storage (private browsing) — the light default stands */
+      }
+    </script>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+</html>

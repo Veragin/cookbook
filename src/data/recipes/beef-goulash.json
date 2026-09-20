@@ -1,0 +1,42 @@
+{
+  "slug": "beef-goulash",
+  "name": "Beef Goulash",
+  "folderId": "mains-soups",
+  "servings": 6,
+  "meals": ["lunch", "dinner"],
+  "groups": [
+    {
+      "title": "Stew",
+      "items": [
+        { "name": "beef shoulder", "quantity": 800, "unit": "g", "note": "cubed" },
+        { "name": "olive oil", "quantity": 2, "unit": "tbsp" },
+        { "name": "onion", "quantity": 3, "unit": "pcs", "note": "sliced" },
+        { "name": "garlic", "quantity": 4, "unit": "pcs", "note": "cloves, crushed" },
+        { "name": "smoked paprika", "quantity": 2, "unit": "tbsp" },
+        { "name": "caraway seed", "quantity": 1, "unit": "tsp" },
+        { "name": "chopped tomato", "quantity": 400, "unit": "g", "note": "tinned" },
+        { "name": "beef stock", "quantity": 1.5, "unit": "l" },
+        { "name": "carrot", "quantity": 2, "unit": "pcs", "note": "thickly sliced" },
+        { "name": "red pepper", "quantity": 1, "unit": "pcs", "note": "diced" },
+        { "name": "potato", "quantity": 600, "unit": "g", "note": "in large chunks" },
+        { "name": "salt", "quantity": null, "unit": null },
+        { "name": "black pepper", "quantity": null, "unit": null }
+      ]
+    },
+    {
+      "title": "To serve",
+      "items": [
+        { "name": "sour cream", "quantity": 150, "unit": "ml" },
+        { "name": "parsley", "quantity": 3, "unit": "tbsp", "note": "chopped" }
+      ]
+    }
+  ],
+  "instructions": [
+    "Pat the beef dry, season well and brown it in the oil in batches, then set aside.",
+    "Soften the onion in the same pot over low heat for 10 minutes, then add the garlic.",
+    "Take the pot off the heat, stir in the paprika and caraway so they do not burn.",
+    "Return the beef, add the tomatoes and stock, and simmer covered for 90 minutes.",
+    "Add the carrot, pepper and potato and cook uncovered for another 30 minutes.",
+    "Season to taste and rest for 10 minutes before serving with sour cream and parsley."
+  ]
+}
